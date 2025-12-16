@@ -22,8 +22,8 @@ const DATA_HOME: PageData = {
   ],
   exclusionsTitle: "Key Contacts",
   exclusions: [
-    { id: 3, text: "BSW Stroke Coord\n(979) 207-0100" },
-    { id: 4, text: "St. Joe Stroke Coord\n(979) 776-3777" },
+    { id: 3, text: "St. Joseph Regional Hospital\n(979) 776-3777" },
+    { id: 4, text: "Baylor Scott & White Hospital\n(979) 207-0100" },
   ],
   tableTitle: "Primary Stroke Centers",
   tableHeaders: ["Center Name", "Address", "Contact", "Capabilities"],
@@ -51,7 +51,7 @@ const DATA_MT: PageData = {
   navTitle: 'Mech. Thrombectomy',
   title: 'Mechanical Thrombectomy (MT)',
   subtitle: 'LVO Acute Ischemic Stroke',
-  description: "Endovascular clot retrieval for **large-vessel occlusion (LVO)** acute ischemic stroke. Benefit is **time-dependent** and strongest when fast imaging + transfer systems minimize delays.",
+  description: "Endovascular clot retrieval for **large-vessel occlusion (LVO)** in acute ischemic stroke.",
   kpis: [
     { label: "Primary Target", value: "Anterior LVO", tag: "ICA / Proximal MCA" },
     { label: "Standard Window", value: "≤ 6 Hours", tag: "NCCT + CTA" },
@@ -77,7 +77,7 @@ const DATA_MT: PageData = {
   exclusions: [
     { id: 1, text: "Intracranial hemorrhage on initial imaging." },
     { id: 2, text: "No treatable target or inaccessible distal occlusion." },
-    { id: 3, text: "Large established infarct (ASPECTS < 6) without advanced selection." },
+    { id: 3, text: "Large established infarct (ASPECTS < 6)." },
     { id: 4, text: "Severe comorbidity or life expectancy < 6 months." },
     { id: 5, text: "Uncorrectable bleeding diathesis (case-by-case)." },
   ],
@@ -315,7 +315,7 @@ const DATA_DISSECTION: PageData = {
   subtitle: 'Carotid & Vertebral Pathologies',
   description: "A tear in the intimal lining of the cervical arteries, a common cause of stroke in young adults. Treatment focuses on preventing thromboembolism while the vessel heals.",
   kpis: [
-    { label: "Primary Rx", value: "Antithrombotic", tag: "Antiplatelet OR Anticoag" },
+    { label: "Primary Rx", value: "Antithrombotic", tag: "Antiplatelet OR Anticoagulation" },
     { label: "Duration", value: "3 – 6 Months", tag: "Until imaging confirms healing" },
     { label: "Healing Rate", value: "~80-90%", tag: "Stenosis resolution" },
     { label: "Recurrence", value: "~2% @ 90d", tag: "Low recurrent stroke rate" }
