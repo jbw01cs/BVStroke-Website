@@ -28,7 +28,7 @@ const DATA_HOME: PageData = {
   tableTitle: "Primary Stroke Centers",
   tableHeaders: ["Center Name", "Address", "Contact", "Capabilities"],
   tableData: [
-    { col1: "St. Joseph Regional", col2: "2801 Franciscan Dr, Bryan", col3: "(979) 776-3777", col4: "CT/CTA/MRI, TNK, 24/7 Neuro", type: "good", badgeText: "PSC" },
+    { col1: "St. Joseph Regional", col2: "2801 Franciscan Dr, Bryan", col3: "(979) 776-3777", col4: "CT/CTA/MRI, TNK, MT, 24/7 Neuro", type: "good", badgeText: "PSC" },
     { col1: "BSW College Station", col2: "700 Scott & White Dr", col3: "(979) 207-0100", col4: "CT/CTA/MRI, TNK, Tele-Neuro", type: "good", badgeText: "PSC" },
   ],
   strokeStats: {
