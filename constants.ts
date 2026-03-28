@@ -6,7 +6,7 @@ const DATA_HOME: PageData = {
   navTitle: 'Home',
   title: 'Brazos Valley Stroke',
   subtitle: 'Regional Clinical Pathways',
-  description: "Welcome to the central resource for **Brazos Valley Stroke**. \n\nThis application aggregates evidence-based protocols for **Stroke**, and other cerebrovascular pathologies, tailored for the **Bryan / College Station** and surrounding Brazos Valley region.",
+  description: "Welcome to the central resource for Brazos Valley Stroke. \n\nThis application aggregates evidence-based protocols for Stroke, and other cerebrovascular pathologies, tailored for the Bryan / College Station and surrounding Brazos Valley region.",
   kpis: [
     { label: "Region", value: "Bryan / CS", tag: "Brazos Valley" },
     { label: "Designation", value: "Primary", tag: "Stroke Centers" },
@@ -51,7 +51,7 @@ const DATA_MT: PageData = {
   navTitle: 'Mech. Thrombectomy',
   title: 'Mechanical Thrombectomy (MT)',
   subtitle: 'LVO Acute Ischemic Stroke',
-  description: "Endovascular clot retrieval for **large-vessel occlusion (LVO)** in acute ischemic stroke.",
+  description: "Endovascular clot retrieval for large-vessel occlusion (LVO) in acute ischemic stroke.",
   kpis: [
     { label: "Primary Target", value: "Anterior LVO", tag: "ICA / Proximal MCA" },
     { label: "Standard Window", value: "≤ 6 Hours", tag: "NCCT + CTA" },
@@ -72,17 +72,17 @@ const DATA_MT: PageData = {
     { id: 3, text: "NCCT excludes hemorrhage; early infarct burden acceptable." },
     { id: 4, text: "Baseline function minimal disability (mRS 0–1)." },
     { id: 5, text: "Meets specific time window & imaging selection criteria." },
-    { id: 6, text: "Basilar artery occlusion within 24h with NIHSS ≥ 10 — **COR 1, LOE B-R** (ATTENTION, BAOCHE; 2026 AHA/ASA)." },
-    { id: 7, text: "Pediatric patients **≥ 6 years** with confirmed LVO — **COR 2a** (2026 AHA/ASA Guidelines)." },
+    { id: 6, text: "Basilar artery occlusion within 24h with NIHSS ≥ 10 (ATTENTION, BAOCHE)." },
+    { id: 7, text: "Pediatric patients ≥ 6 years with confirmed LVO." },
   ],
   exclusionsTitle: "Exclusions / Relative",
   exclusions: [
     { id: 1, text: "Intracranial hemorrhage on initial imaging." },
     { id: 2, text: "No treatable target or inaccessible distal occlusion." },
-    { id: 3, text: "Severe established infarct (ASPECTS ≤ 2); ASPECTS 3–5 may benefit in extended window (SELECT2, ANGEL-ASPECT — COR 2a)." },
+    { id: 3, text: "Severe established infarct (ASPECTS ≤ 2); ASPECTS 3–5 may benefit in extended window (SELECT2, ANGEL-ASPECT)." },
     { id: 4, text: "Severe comorbidity or life expectancy < 6 months." },
     { id: 5, text: "Uncorrectable bleeding diathesis (case-by-case)." },
-    { id: 6, text: "**Intensive SBP lowering (<140 mmHg) after successful EVT is HARMFUL** — COR 3: Harm (2026 AHA/ASA)." },
+    { id: 6, text: "Intensive SBP lowering (<140 mmHg) after successful EVT is HARMFUL." },
   ],
   tableTitle: "Treatment Windows & Selection",
   tableHeaders: ["Window", "Candidate Profile", "Imaging Required", "Endpoint Goal"],
@@ -90,7 +90,7 @@ const DATA_MT: PageData = {
     { col1: "0–6 hours", col2: "Classic anterior LVO (ICA/M1)", col3: "NCCT + CTA (Perfusion optional)", col4: "Fast reperfusion (mTICI 2b-3)", type: "good" },
     { col1: "6–16 hours", col2: "Anterior LVO + Mismatch", col3: "CTP or MRI (DEFUSE 3 criteria)", col4: "mRS shift; mRS 0-2", type: "warn" },
     { col1: "6–24 hours", col2: "Clinical-Core Mismatch", col3: "CTP or MRI (DAWN criteria)", col4: "Functional independence", type: "warn" },
-    { col1: "Large Core", col2: "ASPECTS 3–5 (SELECT2, ANGEL-ASPECT)", col3: "NCCT + CTA +/- CTP", col4: "Salvage (Reduced disability) — COR 2a", type: "neutral", badgeText: "≤24h" }
+    { col1: "Large Core", col2: "ASPECTS 3–5 (SELECT2, ANGEL-ASPECT)", col3: "NCCT + CTA +/- CTP", col4: "Salvage (Reduced disability)", type: "neutral", badgeText: "≤24h" }
   ],
   trials: [
     { name: "SWIFT PRIME", description: "Standard Window (≤6h)", window: "≤6h", outcome: "mRS 0–2: 60% vs 35%", safety: "sICH 0% vs 3%" },
@@ -119,7 +119,7 @@ const DATA_TNK: PageData = {
   navTitle: 'TNKase (IVT)',
   title: 'Tenecteplase (TNKase)',
   subtitle: 'Chemical Thrombolysis for AIS',
-  description: "A genetically modified variant of alteplase with **higher fibrin specificity** and longer half-life, allowing for **single bolus dosing**. The **2026 AHA/ASA Guidelines** give tenecteplase **COR 1, LOE A** as equivalent to alteplase — it is now the preferred thrombolytic at most stroke centers. **Not recommended** for non-disabling minor stroke (NIHSS ≤5) where DAPT is preferred.",
+  description: "A genetically modified variant of alteplase with higher fibrin specificity and longer half-life, allowing for single bolus dosing. Now the preferred thrombolytic at most stroke centers. Not recommended for non-disabling minor stroke (NIHSS ≤5) where DAPT is preferred.",
   kpis: [
     { label: "Dose", value: "0.25 mg/kg", tag: "Max 25mg • Single Bolus" },
     { label: "Time Window", value: "≤ 4.5 Hours", tag: "From Last Known Well" },
@@ -128,12 +128,12 @@ const DATA_TNK: PageData = {
   ],
   indicationsTitle: "Inclusion Criteria",
   indications: [
-    { id: 1, text: "Clinical diagnosis of ischemic stroke with measurable, **disabling** deficit." },
+    { id: 1, text: "Clinical diagnosis of ischemic stroke with measurable, disabling deficit." },
     { id: 2, text: "Onset of symptoms < 4.5 hours before treatment start." },
     { id: 3, text: "Age ≥ 18 years." },
-    { id: 4, text: "LVO patients bridging to MT — standard of care (EXTEND-IA TNK); **COR 1, LOE A** per 2026 AHA/ASA." },
-    { id: 5, text: "Non-LVO patients — non-inferior to alteplase (AcT, TRACE-2); **COR 1, LOE A** per 2026 AHA/ASA." },
-    { id: 6, text: "**Non-disabling minor stroke (NIHSS ≤5): IVT NOT recommended — use DAPT instead** (ARAMIS, TEMPO-2; COR 3: No Benefit)." },
+    { id: 4, text: "LVO patients bridging to MT — standard of care (EXTEND-IA TNK)." },
+    { id: 5, text: "Non-LVO patients — non-inferior to alteplase (AcT, TRACE-2)." },
+    { id: 6, text: "Non-disabling minor stroke (NIHSS ≤5): IVT NOT recommended — use DAPT instead (ARAMIS, TEMPO-2)." },
   ],
   exclusionsTitle: "Contraindications (Same as Alteplase)",
   exclusions: [
@@ -175,7 +175,7 @@ const DATA_MEVO: PageData = {
   navTitle: 'MeVo (Distal)',
   title: 'MeVo Thrombectomy',
   subtitle: 'Distal & Medium Vessel Occlusions',
-  description: "Endovascular treatment of **M2/M3, A1/A2, and P1/P2** segments. While technically feasible with modern mini-catheters, completed RCTs (ESCAPE-MeVO, DISTAL) have **definitively failed to demonstrate benefit** over best medical management (BMM). The **2026 AHA/ASA Guidelines do not recommend routine EVT** for MeVo — individual cases with disabling deficits require shared decision-making.",
+  description: "Endovascular treatment of M2/M3, A1/A2, and P1/P2 segments. While technically feasible with modern mini-catheters, completed RCTs (ESCAPE-MeVO, DISTAL) have definitively failed to demonstrate benefit over best medical management (BMM). Routine EVT for MeVo is not recommended — individual cases with disabling deficits require shared decision-making.",
   kpis: [
     { label: "Anatomy", value: "M2-3 / A1-2 / P1", tag: "Distal to Circle of Willis" },
     { label: "Tech. Success", value: "> 85%", tag: "High reperfusion rates" },
@@ -207,8 +207,8 @@ const DATA_MEVO: PageData = {
     { col1: "M3 / Distal", col2: "Hemorrhagic Risk", col3: "Pharmacologic intra-arterial tPA?", col4: "RCTs do not support routine EVT", type: "bad" }
   ],
   trials: [
-    { name: "ESCAPE-MeVO", description: "M2/M3/A1/P1 vs BMM", window: "RCT (Published 2024)", outcome: "Neutral — no mRS shift benefit (primary endpoint missed)", safety: "Higher ICH rate in EVT arm; cited in 2026 AHA/ASA Guidelines" },
-    { name: "DISTAL", description: "Distal occlusion RCT (Europe)", window: "RCT (Published 2024)", outcome: "Neutral — EVT no better than BMM", safety: "No clinical benefit; cited in 2026 AHA/ASA Guidelines" },
+    { name: "ESCAPE-MeVO", description: "M2/M3/A1/P1 vs BMM", window: "RCT (Published 2024)", outcome: "Neutral — no mRS shift benefit (primary endpoint missed)", safety: "Higher ICH rate in EVT arm" },
+    { name: "DISTAL", description: "Distal occlusion RCT (Europe)", window: "RCT (Published 2024)", outcome: "Neutral — EVT no better than BMM", safety: "No clinical benefit" },
     { name: "DISCOUNT", description: "MeVo Thrombectomy", window: "RCT", outcome: "Pending / Mixed", safety: "Technical success ≠ Clinical benefit" },
     { name: "Previous Registries", description: "Observational Data", window: "Retrospective", outcome: "Suggested benefit", safety: "Likely selection bias (treaters chose best cases)" }
   ],
@@ -225,7 +225,7 @@ const DATA_CTP: PageData = {
   navTitle: 'CT Perfusion',
   title: 'CT Perfusion (CTP)',
   subtitle: 'Physiology & Interpretation',
-  description: "Advanced imaging to distinguish **irreversibly damaged core** from **salvageable penumbra**. Essential for decision making in the **extended window (6–24h)** or stroke of unknown onset (Wake-Up).",
+  description: "Advanced imaging to distinguish irreversibly damaged core from salvageable penumbra. Essential for decision making in the extended window (6–24h) or stroke of unknown onset (Wake-Up).",
   kpis: [
     { label: "Ischemic Core", value: "CBF < 30%", tag: "Irreversible" },
     { label: "Penumbra", value: "Tmax > 6s", tag: "Tissue at Risk" },
@@ -275,7 +275,7 @@ const DATA_ICAD: PageData = {
   navTitle: 'ICAD & Stenting',
   title: 'Intracranial Atherosclerotic Disease',
   subtitle: 'Aggressive Medical Management vs. Stenting',
-  description: "Management of symptomatic ICAD (70-99% stenosis). Evidence strongly favors **aggressive medical management** as first-line therapy. Stenting is reserved for select refractory cases.",
+  description: "Management of symptomatic ICAD (70-99% stenosis). Evidence strongly favors aggressive medical management as first-line therapy. Stenting is reserved for select refractory cases.",
   kpis: [
     { label: "Primary Rx", value: "Medical Mgmt", tag: "DAPT + Statin + BP" },
     { label: "DAPT Duration", value: "90 Days", tag: "ASA + Clopidogrel" },
