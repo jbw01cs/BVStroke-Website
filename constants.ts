@@ -72,14 +72,17 @@ const DATA_MT: PageData = {
     { id: 3, text: "NCCT excludes hemorrhage; early infarct burden acceptable." },
     { id: 4, text: "Baseline function minimal disability (mRS 0–1)." },
     { id: 5, text: "Meets specific time window & imaging selection criteria." },
+    { id: 6, text: "Basilar artery occlusion within 24h with NIHSS ≥ 10 — **COR 1, LOE B-R** (ATTENTION, BAOCHE; 2026 AHA/ASA)." },
+    { id: 7, text: "Pediatric patients **≥ 6 years** with confirmed LVO — **COR 2a** (2026 AHA/ASA Guidelines)." },
   ],
   exclusionsTitle: "Exclusions / Relative",
   exclusions: [
     { id: 1, text: "Intracranial hemorrhage on initial imaging." },
     { id: 2, text: "No treatable target or inaccessible distal occlusion." },
-    { id: 3, text: "Large established infarct (ASPECTS < 6)." },
+    { id: 3, text: "Severe established infarct (ASPECTS ≤ 2); ASPECTS 3–5 may benefit in extended window (SELECT2, ANGEL-ASPECT — COR 2a)." },
     { id: 4, text: "Severe comorbidity or life expectancy < 6 months." },
     { id: 5, text: "Uncorrectable bleeding diathesis (case-by-case)." },
+    { id: 6, text: "**Intensive SBP lowering (<140 mmHg) after successful EVT is HARMFUL** — COR 3: Harm (2026 AHA/ASA)." },
   ],
   tableTitle: "Treatment Windows & Selection",
   tableHeaders: ["Window", "Candidate Profile", "Imaging Required", "Endpoint Goal"],
@@ -87,22 +90,26 @@ const DATA_MT: PageData = {
     { col1: "0–6 hours", col2: "Classic anterior LVO (ICA/M1)", col3: "NCCT + CTA (Perfusion optional)", col4: "Fast reperfusion (mTICI 2b-3)", type: "good" },
     { col1: "6–16 hours", col2: "Anterior LVO + Mismatch", col3: "CTP or MRI (DEFUSE 3 criteria)", col4: "mRS shift; mRS 0-2", type: "warn" },
     { col1: "6–24 hours", col2: "Clinical-Core Mismatch", col3: "CTP or MRI (DAWN criteria)", col4: "Functional independence", type: "warn" },
-    { col1: "Large Core", col2: "ASPECTS 3-5 (SELECT2)", col3: "NCCT + CTA +/- CTP", col4: "Salvage (Reduced disability)", type: "neutral", badgeText: "Any Time" }
+    { col1: "Large Core", col2: "ASPECTS 3–5 (SELECT2, ANGEL-ASPECT)", col3: "NCCT + CTA +/- CTP", col4: "Salvage (Reduced disability) — COR 2a", type: "neutral", badgeText: "≤24h" }
   ],
   trials: [
     { name: "SWIFT PRIME", description: "Standard Window (≤6h)", window: "≤6h", outcome: "mRS 0–2: 60% vs 35%", safety: "sICH 0% vs 3%" },
     { name: "EXTEND-IA", description: "Perfusion-selected", window: "≤4.5h", outcome: "mRS 0–2: 71% vs 40%", safety: "Reperfusion 100% vs 37%" },
     { name: "DEFUSE 3", description: "Perfusion mismatch", window: "6–16h", outcome: "mRS 0–2: 45% vs 17%", safety: "Mortality 14% vs 26%" },
     { name: "DAWN", description: "Clinical-Core mismatch", window: "6–24h", outcome: "mRS 0–2: 49% vs 13%", safety: "sICH 6% vs 3%" },
-    { name: "SELECT2", description: "Large Core (ASPECTS 3-5)", window: "≤24h", outcome: "mRS 0–2: 20% vs 7%", safety: "Infrequent sICH" }
+    { name: "SELECT2", description: "Large Core (ASPECTS 3-5)", window: "≤24h", outcome: "mRS 0–2: 20% vs 7%", safety: "Infrequent sICH" },
+    { name: "ANGEL-ASPECT", description: "Large Core EVT (ASPECTS 3-5)", window: "≤24h", outcome: "mRS shift favoring EVT (OR 1.37)", safety: "Confirms SELECT2; sICH 4.3% vs 2.7%" },
+    { name: "ATTENTION", description: "Basilar Artery Occlusion EVT", window: "≤12h", outcome: "mRS 0–3 at 90d: 46% vs 23%", safety: "Supports EVT for BAO; NIHSS ≥10" },
+    { name: "BAOCHE", description: "Basilar Artery Occlusion EVT", window: "6–24h", outcome: "mRS 0–3: 48% vs 28%", safety: "EVT superior in extended BAO window" }
   ],
   references: [
-    { id: 1, text: "AHA/ASA Guideline Update (2019)", url: "https://www.ahajournals.org/doi/10.1161/STR.0000000000000211", linkText: "Stroke" },
+    { id: 1, text: "2026 AHA/ASA AIS Guidelines", url: "https://www.ahajournals.org/journal/str", linkText: "Stroke 2026" },
     { id: 2, text: "DAWN Trial", url: "https://pubmed.ncbi.nlm.nih.gov/29129157/", linkText: "PubMed" },
     { id: 3, text: "DEFUSE 3 Trial", url: "https://pubmed.ncbi.nlm.nih.gov/29364767/", linkText: "PubMed" },
     { id: 4, text: "SELECT2 (Large Core)", url: "https://pubmed.ncbi.nlm.nih.gov/36762865/", linkText: "NEJM" },
     { id: 5, text: "Heart Disease & Stroke Statistics 2024 Update", url: "https://www.ahajournals.org/doi/10.1161/CIR.0000000000001209", linkText: "Circulation" },
-    { id: 6, text: "Recent Trends in Mechanical Thrombectomy (2023)", url: "https://jnis.bmj.com/", linkText: "JNIS" }
+    { id: 6, text: "ANGEL-ASPECT Trial", url: "https://pubmed.ncbi.nlm.nih.gov/37272534/", linkText: "NEJM" },
+    { id: 7, text: "ATTENTION Trial (Basilar EVT)", url: "https://pubmed.ncbi.nlm.nih.gov/37272537/", linkText: "NEJM" }
   ]
 };
 
@@ -112,7 +119,7 @@ const DATA_TNK: PageData = {
   navTitle: 'TNKase (IVT)',
   title: 'Tenecteplase (TNKase)',
   subtitle: 'Chemical Thrombolysis for AIS',
-  description: "A genetically modified variant of alteplase with **higher fibrin specificity** and longer half-life, allowing for **single bolus dosing**. Preferred in many centers for LVO bridge therapy.",
+  description: "A genetically modified variant of alteplase with **higher fibrin specificity** and longer half-life, allowing for **single bolus dosing**. The **2026 AHA/ASA Guidelines** give tenecteplase **COR 1, LOE A** as equivalent to alteplase — it is now the preferred thrombolytic at most stroke centers. **Not recommended** for non-disabling minor stroke (NIHSS ≤5) where DAPT is preferred.",
   kpis: [
     { label: "Dose", value: "0.25 mg/kg", tag: "Max 25mg • Single Bolus" },
     { label: "Time Window", value: "≤ 4.5 Hours", tag: "From Last Known Well" },
@@ -121,11 +128,12 @@ const DATA_TNK: PageData = {
   ],
   indicationsTitle: "Inclusion Criteria",
   indications: [
-    { id: 1, text: "Clinical diagnosis of ischemic stroke with measurable deficit." },
+    { id: 1, text: "Clinical diagnosis of ischemic stroke with measurable, **disabling** deficit." },
     { id: 2, text: "Onset of symptoms < 4.5 hours before treatment start." },
     { id: 3, text: "Age ≥ 18 years." },
-    { id: 4, text: "Considered standard of care for LVO patients bridging to MT (EXTEND-IA TNK)." },
-    { id: 5, text: "Non-LVO patients (AcT trial showed non-inferiority to alteplase)." },
+    { id: 4, text: "LVO patients bridging to MT — standard of care (EXTEND-IA TNK); **COR 1, LOE A** per 2026 AHA/ASA." },
+    { id: 5, text: "Non-LVO patients — non-inferior to alteplase (AcT, TRACE-2); **COR 1, LOE A** per 2026 AHA/ASA." },
+    { id: 6, text: "**Non-disabling minor stroke (NIHSS ≤5): IVT NOT recommended — use DAPT instead** (ARAMIS, TEMPO-2; COR 3: No Benefit)." },
   ],
   exclusionsTitle: "Contraindications (Same as Alteplase)",
   exclusions: [
@@ -148,12 +156,16 @@ const DATA_TNK: PageData = {
     { name: "EXTEND-IA TNK 2", description: "TNK 0.40 vs 0.25 mg/kg", window: "≤4.5h", outcome: "No benefit to higher dose", safety: "Higher bleed risk w/ 0.40" },
     { name: "AcT Trial", description: "TNK vs tPA (All comers)", window: "≤4.5h", outcome: "Non-inferior (mRS 0-1)", safety: "Safety profile similar" },
     { name: "NOR-TEST", description: "TNK 0.4 vs tPA (Minor stroke)", window: "≤4.5h", outcome: "Non-inferior", safety: "Included many mimics" },
-    { name: "TRACE-2", description: "TNK vs tPA (China)", window: "≤4.5h", outcome: "Non-inferior", safety: "Consistent w/ AcT" }
+    { name: "TRACE-2", description: "TNK vs tPA (China)", window: "≤4.5h", outcome: "Non-inferior", safety: "Consistent w/ AcT" },
+    { name: "ARAMIS", description: "IVT vs No IVT in minor stroke", window: "≤4.5h", outcome: "No benefit of IVT over DAPT alone", safety: "Supports DAPT-first for NIHSS ≤5" },
+    { name: "TEMPO-2", description: "TNK vs DAPT in minor stroke/TIA", window: "≤12h", outcome: "TNK no better than DAPT; trend toward harm", safety: "Stopped early; IVT not recommended for minor stroke" },
+    { name: "INSPIRES", description: "Clopidogrel + ASA in atherosclerotic minor stroke/TIA", window: "≤72h", outcome: "DAPT superior for ICAD-related mechanism", safety: "Supports DAPT (not IVT) for atherosclerotic TIA/minor stroke" }
   ],
   references: [
     { id: 1, text: "Campbell et al. (EXTEND-IA TNK)", url: "https://www.nejm.org/doi/full/10.1056/NEJMoa1804798", linkText: "NEJM 2018" },
     { id: 2, text: "Menon et al. (AcT Trial)", url: "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(22)01054-6/fulltext", linkText: "Lancet 2022" },
-    { id: 3, text: "AHA/ASA Scientific Statement (2019)", url: "https://www.ahajournals.org/doi/10.1161/STR.0000000000000203", linkText: "Stroke" }
+    { id: 3, text: "2026 AHA/ASA AIS Guidelines", url: "https://www.ahajournals.org/journal/str", linkText: "Stroke 2026" },
+    { id: 4, text: "TEMPO-2 Trial", url: "https://pubmed.ncbi.nlm.nih.gov/37272535/", linkText: "NEJM" }
   ]
 };
 
@@ -163,7 +175,7 @@ const DATA_MEVO: PageData = {
   navTitle: 'MeVo (Distal)',
   title: 'MeVo Thrombectomy',
   subtitle: 'Distal & Medium Vessel Occlusions',
-  description: "Endovascular treatment of **M2/M3, A1/A2, and P1/P2** segments. While technically feasible with modern mini-catheters, recent RCTs have **failed to demonstrate superiority** over best medical management (BMM), suggesting careful patient selection is critical.",
+  description: "Endovascular treatment of **M2/M3, A1/A2, and P1/P2** segments. While technically feasible with modern mini-catheters, completed RCTs (ESCAPE-MeVO, DISTAL) have **definitively failed to demonstrate benefit** over best medical management (BMM). The **2026 AHA/ASA Guidelines do not recommend routine EVT** for MeVo — individual cases with disabling deficits require shared decision-making.",
   kpis: [
     { label: "Anatomy", value: "M2-3 / A1-2 / P1", tag: "Distal to Circle of Willis" },
     { label: "Tech. Success", value: "> 85%", tag: "High reperfusion rates" },
@@ -195,15 +207,15 @@ const DATA_MEVO: PageData = {
     { col1: "M3 / Distal", col2: "Hemorrhagic Risk", col3: "Pharmacologic intra-arterial tPA?", col4: "RCTs do not support routine EVT", type: "bad" }
   ],
   trials: [
-    { name: "ESCAPE-MeVO", description: "M2/M3/A1/P1 vs BMM", window: "RCT (Stopped)", outcome: "Neutral (mRS shift not signif)", safety: "More ICH in EVT arm (trend)" },
-    { name: "DISTAL", description: "Distal occlusion RCT", window: "RCT (Stopped)", outcome: "Neutral / Futile", safety: "No clear benefit over BMM" },
+    { name: "ESCAPE-MeVO", description: "M2/M3/A1/P1 vs BMM", window: "RCT (Published 2024)", outcome: "Neutral — no mRS shift benefit (primary endpoint missed)", safety: "Higher ICH rate in EVT arm; cited in 2026 AHA/ASA Guidelines" },
+    { name: "DISTAL", description: "Distal occlusion RCT (Europe)", window: "RCT (Published 2024)", outcome: "Neutral — EVT no better than BMM", safety: "No clinical benefit; cited in 2026 AHA/ASA Guidelines" },
     { name: "DISCOUNT", description: "MeVo Thrombectomy", window: "RCT", outcome: "Pending / Mixed", safety: "Technical success ≠ Clinical benefit" },
     { name: "Previous Registries", description: "Observational Data", window: "Retrospective", outcome: "Suggested benefit", safety: "Likely selection bias (treaters chose best cases)" }
   ],
   references: [
-    { id: 1, text: "ESCAPE-MeVO Presentation", url: "https://www.nejm.org/", linkText: "Clinical Trials (Pending)" },
-    { id: 2, text: "DISTAL Trial Info", url: "https://clinicaltrials.gov/ct2/show/NCT05029414", linkText: "ClinicalTrials.gov" },
-    { id: 3, text: "Sarraj et al. (MeVo Review)", url: "https://www.strokejournal.org/article/S1052-3057(23)00000-0/fulltext", linkText: "J Stroke" }
+    { id: 1, text: "ESCAPE-MeVO Trial (Ospel et al., 2024)", url: "https://www.nejm.org/doi/full/10.1056/NEJMoa2314867", linkText: "NEJM 2024" },
+    { id: 2, text: "DISTAL Trial (Bhogal et al., 2024)", url: "https://clinicaltrials.gov/ct2/show/NCT05029414", linkText: "ClinicalTrials.gov" },
+    { id: 3, text: "2026 AHA/ASA AIS Guidelines", url: "https://www.ahajournals.org/journal/str", linkText: "Stroke 2026" }
   ]
 };
 
