@@ -4,9 +4,10 @@ import { MTStatsData } from '../types';
 
 interface MTStatsProps {
   data: MTStatsData;
+  onViewCases?: () => void;
 }
 
-export const MTStats: React.FC<MTStatsProps> = ({ data }) => {
+export const MTStats: React.FC<MTStatsProps> = ({ data, onViewCases }) => {
   if (!data) return null;
 
   return (
@@ -62,8 +63,21 @@ export const MTStats: React.FC<MTStatsProps> = ({ data }) => {
         </div>
 
       </div>
-      <div className="mt-3 text-[10px] text-right text-white/30 italic">
-        See References [5, 6] for utilization data sources.
+      <div className="mt-3 flex items-center justify-between">
+        <div className="text-[10px] text-white/30 italic">
+          See References [5, 6] for utilization data sources.
+        </div>
+        {onViewCases && (
+          <button
+            onClick={onViewCases}
+            className="text-[11px] text-white/25 hover:text-accent/80 transition-colors flex items-center gap-1.5 group"
+          >
+            <span>View Case Presentations</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        )}
       </div>
     </Section>
   );

@@ -7,11 +7,42 @@ import { ClinicalTrials } from './components/ClinicalTrials';
 import { References } from './components/References';
 import { StrokeStats } from './components/StrokeStats';
 import { MTStats } from './components/MTStats';
+import { CaseLanding } from './components/CaseLanding';
+import { CasePresentation } from './components/CasePresentation';
 import { PAGES, PageId } from './constants';
+
+// caseView: null = normal page, 'landing' = case landing page, 'case1'/'case2'/etc = individual case
+type CaseView = null | 'landing' | string;
 
 const App: React.FC = () => {
   const [activePage, setActivePage] = useState<PageId>('home');
+  const [caseView, setCaseView] = useState<CaseView>(null);
   const data = PAGES[activePage];
+
+  const handleNavigate = (page: PageId) => {
+    setCaseView(null);
+    setActivePage(page);
+  };
+
+  const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  const renderCaseContent = () => {
+    if (caseView === 'landing') {
+      return (
+        <CaseLanding
+          onBack={() => { setCaseView(null); scrollTop(); }}
+          onSelectCase={(id) => { setCaseView(id); scrollTop(); }}
+        />
+      );
+    }
+    // Individual case
+    return (
+      <CasePresentation
+        caseId={caseView!}
+        onBack={() => { setCaseView('landing'); scrollTop(); }}
+      />
+    );
+  };
 
   return (
     <div className="min-h-screen bg-bg0 bg-gradient-to-b from-bg0 to-bg1 selection:bg-accent selection:text-bg0 pb-20">
@@ -23,11 +54,12 @@ const App: React.FC = () => {
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
-        <Header activePage={activePage} onNavigate={setActivePage} />
-        
-        {/* We use a key here to force re-render/animation when page changes */}
-        <main key={activePage} className="space-y-8 animate-fade-in">
-          <Hero 
+        <Header activePage={activePage} onNavigate={handleNavigate} />
+
+        <main key={caseView ?? activePage} className="space-y-8 animate-fade-in">
+          {caseView ? renderCaseContent() : (
+          <>
+          <Hero
             title={data.title}
             subtitle={data.subtitle}
             description={data.description}
@@ -35,52 +67,54 @@ const App: React.FC = () => {
           />
 
           {data.mtStats && (
-            <MTStats data={data.mtStats} />
+            <MTStats data={data.mtStats} onViewCases={() => { setCaseView('landing'); scrollTop(); }} />
           )}
 
-          <ProtocolGrid 
+          <ProtocolGrid
             indicationsTitle={data.indicationsTitle}
             indications={data.indications}
             exclusionsTitle={data.exclusionsTitle}
             exclusions={data.exclusions}
             protocolNote={data.protocolNote}
           />
-          <TreatmentWindows 
+          <TreatmentWindows
             title={data.tableTitle}
             headers={data.tableHeaders}
             rows={data.tableData}
           />
-          <ClinicalTrials 
+          <ClinicalTrials
             trials={data.trials}
           />
-          <References 
+          <References
             references={data.references}
           />
-          
+
           {data.strokeStats && (
             <StrokeStats data={data.strokeStats} />
           )}
 
           {activePage === 'home' && (
             <div className="flex justify-center pt-8 pb-4 opacity-60 hover:opacity-100 transition-opacity">
-              <a 
-                href="mailto:info@BVStroke.com" 
+              <a
+                href="mailto:info@BVStroke.com"
                 className="text-xs font-medium text-white/40 hover:text-white transition-colors border-b border-transparent hover:border-white/20"
               >
                 Administrative Contact: info@BVStroke.com
               </a>
             </div>
           )}
+          </>
+          )}
         </main>
       </div>
 
-      <a 
+      {!caseView && <a
         href="#references"
         className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 rounded-full bg-black/40 backdrop-blur-md border border-white/10 shadow-xl hover:bg-black/60 transition-all group"
       >
         <div className="w-2 h-2 rounded-full bg-link group-hover:scale-125 transition-transform" />
         <span className="text-sm font-medium text-white/90">References</span>
-      </a>
+      </a>}
     </div>
   );
 };
