@@ -36,7 +36,7 @@ export interface Reference {
   linkText: string;
 }
 
-export interface StrokeStatsData {
+export interface StrokeStatsYear {
   year: string;
   total: number;
   breakdown: {
@@ -44,6 +44,10 @@ export interface StrokeStatsData {
     count: number;
     color: string; // tailwind color class prefix e.g. 'emerald'
   }[];
+}
+
+export interface StrokeStatsData extends StrokeStatsYear {
+  compareTo?: StrokeStatsYear;
 }
 
 export interface MTStatsData {

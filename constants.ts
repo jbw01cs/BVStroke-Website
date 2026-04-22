@@ -32,14 +32,24 @@ const DATA_HOME: PageData = {
     { col1: "BSW College Station", col2: "700 Scott & White Dr", col3: "(979) 207-0100", col4: "CT/CTA/MRI, TNK, Tele-Neuro", type: "good", badgeText: "PSC" },
   ],
   strokeStats: {
-    year: "2024",
-    total: 1046,
+    year: "2025",
+    total: 958,
     breakdown: [
-      { label: "Ischemic Stroke", count: 599, color: "emerald" },
-      { label: "TIA", count: 257, color: "amber" },
-      { label: "Intracranial Hemorrhage (ICH)", count: 86, color: "rose" },
-      { label: "Subarachnoid Hemorrhage (SAH)", count: 18, color: "indigo" }
-    ]
+      { label: "Ischemic Stroke", count: 606, color: "emerald" },
+      { label: "TIA", count: 252, color: "amber" },
+      { label: "Intracranial Hemorrhage (ICH)", count: 93, color: "rose" },
+      { label: "Subarachnoid Hemorrhage (SAH)", count: 7, color: "indigo" }
+    ],
+    compareTo: {
+      year: "2024",
+      total: 960,
+      breakdown: [
+        { label: "Ischemic Stroke", count: 599, color: "emerald" },
+        { label: "TIA", count: 257, color: "amber" },
+        { label: "Intracranial Hemorrhage (ICH)", count: 86, color: "rose" },
+        { label: "Subarachnoid Hemorrhage (SAH)", count: 18, color: "indigo" }
+      ]
+    }
   },
   trials: [],
   references: []
