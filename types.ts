@@ -58,6 +58,17 @@ export interface MTStatsData {
   treatedPercent: string;
 }
 
+export interface OsmoticAgent {
+  name: string;
+  subtitle?: string;
+  bolus: string;
+  maintenance: string;
+  targets: string;
+  notes: string;
+  access: string;
+  accent: 'mannitol' | 'hts15' | 'hts3' | 'rescue';
+}
+
 export interface PageData {
   id: string;
   navTitle: string;
@@ -81,4 +92,5 @@ export interface PageData {
   
   strokeStats?: StrokeStatsData;
   mtStats?: MTStatsData;
+  osmoticAgents?: OsmoticAgent[];
 }

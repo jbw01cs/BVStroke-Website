@@ -377,6 +377,111 @@ const DATA_DISSECTION: PageData = {
   ]
 };
 
+// --- 7. Elevated ICP / Cerebral Edema ---
+const DATA_ICP: PageData = {
+  id: 'icp',
+  navTitle: 'ICP & Edema',
+  title: 'Elevated ICP & Cerebral Edema',
+  subtitle: 'Ischemic & Hemorrhagic Stroke',
+  description: "",
+  kpis: [
+    { label: "ICP Target", value: "< 22 mm Hg", tag: "Sustained > 5 min triggers tx" },
+    { label: "CPP Target", value: "60 – 70 mm Hg", tag: "Avoid CPP < 60" },
+    { label: "Serum Na Goal", value: "145 – 155 mEq/L", tag: "Hypertonic saline" },
+    { label: "Serum Osm Goal", value: "< 320 mOsm/kg", tag: "Mannitol therapy" }
+  ],
+  indicationsTitle: "Surgical Indications",
+  indications: [
+    { id: 1, text: "Decompressive hemicraniectomy for malignant MCA infarction in patients ≤ 60y who deteriorate within 48h despite medical therapy." },
+    { id: 2, text: "Decompressive hemicraniectomy in selected patients > 60y reduces mortality; functional outcome benefit is uncertain." },
+    { id: 3, text: "Suboccipital craniectomy for cerebellar infarct ≥ 15 mL with brainstem compression, neurological deterioration, or radiographic mass effect." },
+    { id: 4, text: "Cerebellar ICH with deterioration, brainstem compression, hydrocephalus, or hematoma volume ≥ 15 mL → emergent surgical evacuation ± EVD." },
+    { id: 5, text: "EVD for obstructive hydrocephalus from cerebellar stroke or large IVH; add intraventricular thrombolytic for large IVH to reduce mortality." },
+    { id: 6, text: "Minimally invasive evacuation of supratentorial ICH (20–30 mL+) reduces mortality." },
+    { id: 7, text: "Open craniotomy for supratentorial ICH may be considered as a lifesaving measure in deteriorating patients." },
+  ],
+  exclusionsTitle: "Therapies NOT Recommended",
+  exclusions: [
+    { id: 1, text: "Corticosteroids: not recommended for ischemic or hemorrhagic stroke edema (increased infection risk without benefit)." },
+    { id: 2, text: "Therapeutic hypothermia and barbiturate coma: not routinely recommended." },
+    { id: 3, text: "IV glibenclamide for large hemispheric infarct: no functional benefit." },
+    { id: 4, text: "Decompressive surgery > 72h after onset is associated with worse outcomes — operate within 48h when indicated." },
+    { id: 5, text: "Avoid prophylactic hyperventilation; brief PaCO₂ reduction (30–35) only as a bridge to definitive therapy." },
+    { id: 6, text: "Avoid hypotonic IV fluids and D5W; serum Na < 135 worsens edema." },
+  ],
+  protocolNote: "General measures first: head of bed 30°, neutral neck, normothermia, normoglycemia, treat pain/agitation, normocapnia, avoid hypoxia, treat seizures. Escalate to osmotherapy → consider surgical decompression for refractory ICP or clinical deterioration.",
+  tableTitle: "Surgical Evidence Summary",
+  tableHeaders: ["Intervention", "Target Population", "Timing / Window", "Outcome"],
+  tableData: [
+    { col1: "Hemicraniectomy", col2: "Malignant MCA, age ≤ 60", col3: "< 48h from onset", col4: "↓ Mortality ~50%; ~43% achieve good functional outcome (mRS ≤ 3)", type: "good", badgeText: "DH ≤60y" },
+    { col1: "Hemicraniectomy", col2: "Malignant MCA, age > 60", col3: "< 48h", col4: "↓ Mortality; functional benefit uncertain", type: "warn", badgeText: "DH >60y" },
+    { col1: "Suboccipital craniectomy", col2: "Cerebellar infarct ≥ 15 mL with mass effect", col3: "Before brainstem compression", col4: "↓ Mortality; better functional recovery vs medical alone", type: "good", badgeText: "Cerebellar AIS" },
+    { col1: "Suboccipital craniectomy + evacuation", col2: "Cerebellar ICH ≥ 15 mL or deterioration", col3: "Emergent", col4: "↓ Mortality vs medical management", type: "good", badgeText: "Cerebellar ICH" },
+    { col1: "Minimally invasive evacuation", col2: "Supratentorial ICH 20–30 mL+", col3: "Within 72h", col4: "↓ Mortality; functional outcome neutral; benefit if residual clot ≤ 15 mL", type: "warn", badgeText: "MIS ICH" },
+    { col1: "EVD ± intraventricular thrombolytic", col2: "Obstructive hydrocephalus / large IVH", col3: "Acute", col4: "↓ Mortality; functional benefit greatest with > 85% IVH clearance", type: "good", badgeText: "EVD/IVH" }
+  ],
+  osmoticAgents: [
+    {
+      name: "Mannitol 20%",
+      subtitle: "Osmotic diuretic — first-line bolus option",
+      bolus: "0.25 – 1.0 g/kg IV over 15 – 30 min",
+      maintenance: "0.25 – 0.5 g/kg IV every 4 – 6 h PRN",
+      targets: "Serum osm < 320 mOsm/kg • Osm gap < 10 – 20 • SBP > 90 mm Hg",
+      notes: "Free-water diuresis → risk of hypovolemia, hypokalemia, AKI, rebound ICP. Replace urine output.",
+      access: "Peripheral IV acceptable",
+      accent: "mannitol"
+    },
+    {
+      name: "Hypertonic Saline 1.5% (NaCl)",
+      subtitle: "Maintenance / sustained mild hyperosmolar therapy",
+      bolus: "Not typically used as bolus",
+      maintenance: "Continuous infusion 30 – 100 mL/h, titrate to target Na",
+      targets: "Serum Na 145 – 155 mEq/L • Δ Na ≤ 8 – 10 mEq/L per 24 h",
+      notes: "Lower osmolarity makes this the safest HTS for peripheral and prolonged use. Useful after a 3% bolus to maintain hyperosmolar state.",
+      access: "Peripheral IV acceptable",
+      accent: "hts15"
+    },
+    {
+      name: "Hypertonic Saline 3% (NaCl)",
+      subtitle: "Workhorse osmotherapy — bolus + maintenance",
+      bolus: "250 – 500 mL IV over 15 – 30 min (≈ 2.5 – 5 mL/kg)",
+      maintenance: "Continuous infusion 30 – 150 mL/h, titrate to target Na",
+      targets: "Serum Na 145 – 155 mEq/L (do not exceed 160) • Recheck Na q4–6h",
+      notes: "Preferred when hypovolemia or AKI limits mannitol. Avoid rapid Na correction (> 10 – 12 mEq/L per 24 h) to limit central pontine myelinolysis risk.",
+      access: "Central line preferred for prolonged or bolus infusion",
+      accent: "hts3"
+    },
+    {
+      name: "23.4% NaCl  (Rescue)",
+      subtitle: "Reserved for refractory ICP / impending herniation",
+      bolus: "30 mL IV over 5 – 10 min  ×  may repeat once",
+      maintenance: "Not for maintenance — bridge to definitive therapy",
+      targets: "Reverses transtentorial herniation; transient ↓ ICP within minutes",
+      notes: "Strict central line requirement. Anticipate transient hypotension. Used as a bridge to decompressive surgery.",
+      access: "Central line REQUIRED",
+      accent: "rescue"
+    }
+  ],
+  trials: [
+    { name: "DECIMAL / DESTINY / HAMLET (pooled)", description: "Hemicraniectomy in malignant MCA, age ≤ 60", window: "< 48h", outcome: "Absolute mortality reduction ~50%; mRS ≤ 3 at 12 mo: 43% vs 21%", safety: "Supports early decompression in younger patients" },
+    { name: "DESTINY II", description: "Hemicraniectomy ≥ 60y", window: "< 48h", outcome: "12-mo mortality 33% vs 70%; few patients achieved mRS ≤ 3", safety: "Mortality benefit but high residual disability" },
+    { name: "CHARM", description: "IV glibenclamide for large hemispheric infarct", window: "Acute", outcome: "No improvement in 90-day mRS shift", safety: "Not recommended" },
+    { name: "MISTIE III", description: "Minimally invasive evacuation + alteplase for supratentorial ICH", window: "Within 72h", outcome: "↓ Mortality at 7d, 180d, 365d; primary functional endpoint neutral", safety: "Functional benefit when residual clot ≤ 15 mL" },
+    { name: "CLEAR III", description: "EVD + alteplase for severe IVH", window: "Acute", outcome: "↓ Mortality at 180d; functional benefit when > 85% IVH cleared", safety: "Lower ventriculitis vs saline arm" },
+    { name: "Kuramatsu meta-analysis", description: "Cerebellar ICH surgical evacuation", window: "Emergent", outcome: "Survival benefit at 3 and 12 mo for hematomas ≥ 15 mL", safety: "Mortality benefit clear; functional outcome equivocal" }
+  ],
+  references: [
+    { id: 1, text: "2026 AHA/ASA AIS Guidelines — §6 In-Hospital Management of Acute Complications", url: "https://www.ahajournals.org/journal/str", linkText: "Stroke 2026" },
+    { id: 2, text: "2022 AHA/ASA Spontaneous Intracerebral Hemorrhage Guideline", url: "https://www.ahajournals.org/doi/10.1161/STR.0000000000000407", linkText: "Stroke 2022" },
+    { id: 3, text: "Vahedi K. DECIMAL/DESTINY/HAMLET pooled analysis. Lancet Neurol 2007", url: "https://pubmed.ncbi.nlm.nih.gov/17303527/", linkText: "PubMed" },
+    { id: 4, text: "Jüttler E. DESTINY II. NEJM 2014", url: "https://pubmed.ncbi.nlm.nih.gov/24645942/", linkText: "NEJM" },
+    { id: 5, text: "Hanley DF. MISTIE III. Lancet 2019", url: "https://pubmed.ncbi.nlm.nih.gov/30739747/", linkText: "Lancet" },
+    { id: 6, text: "Hanley DF. CLEAR III. Lancet 2017", url: "https://pubmed.ncbi.nlm.nih.gov/28081952/", linkText: "Lancet" },
+    { id: 7, text: "Sheth KN. CHARM (IV glibenclamide). Lancet Neurol 2024", url: "https://pubmed.ncbi.nlm.nih.gov/39577925/", linkText: "Lancet Neurol" },
+    { id: 8, text: "Kuramatsu JB. Cerebellar ICH evacuation. JAMA 2019", url: "https://pubmed.ncbi.nlm.nih.gov/31593271/", linkText: "JAMA" }
+  ]
+};
+
 export const PAGES = {
   home: DATA_HOME,
   mt: DATA_MT,
@@ -384,7 +489,8 @@ export const PAGES = {
   mevo: DATA_MEVO,
   ctp: DATA_CTP,
   icad: DATA_ICAD,
-  dissection: DATA_DISSECTION
+  dissection: DATA_DISSECTION,
+  icp: DATA_ICP
 };
 
 export type PageId = keyof typeof PAGES;

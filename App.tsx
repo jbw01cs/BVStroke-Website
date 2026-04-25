@@ -7,6 +7,8 @@ import { ClinicalTrials } from './components/ClinicalTrials';
 import { References } from './components/References';
 import { StrokeStats } from './components/StrokeStats';
 import { MTStats } from './components/MTStats';
+import { OsmoticAgents } from './components/OsmoticAgents';
+import { Collapsible } from './components/Collapsible';
 import { CaseLanding } from './components/CaseLanding';
 import { CasePresentation } from './components/CasePresentation';
 import { PAGES, PageId } from './constants';
@@ -70,6 +72,10 @@ const App: React.FC = () => {
             <MTStats data={data.mtStats} onViewCases={() => { setCaseView('landing'); scrollTop(); }} />
           )}
 
+          {data.osmoticAgents && (
+            <OsmoticAgents agents={data.osmoticAgents} />
+          )}
+
           <ProtocolGrid
             indicationsTitle={data.indicationsTitle}
             indications={data.indications}
@@ -77,14 +83,29 @@ const App: React.FC = () => {
             exclusions={data.exclusions}
             protocolNote={data.protocolNote}
           />
-          <TreatmentWindows
-            title={data.tableTitle}
-            headers={data.tableHeaders}
-            rows={data.tableData}
-          />
-          <ClinicalTrials
-            trials={data.trials}
-          />
+          {activePage === 'icp' ? (
+            <Collapsible label="View Supporting Evidence — Surgical Outcomes & Trial Summary">
+              <TreatmentWindows
+                title={data.tableTitle}
+                headers={data.tableHeaders}
+                rows={data.tableData}
+              />
+              <ClinicalTrials
+                trials={data.trials}
+              />
+            </Collapsible>
+          ) : (
+            <>
+              <TreatmentWindows
+                title={data.tableTitle}
+                headers={data.tableHeaders}
+                rows={data.tableData}
+              />
+              <ClinicalTrials
+                trials={data.trials}
+              />
+            </>
+          )}
           <References
             references={data.references}
           />
